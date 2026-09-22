@@ -115,6 +115,14 @@ gradle-app.setting
 
 # Potentially copyrighted test APK
 *.apk
+*.apks
+*.aab
+
+# Signing material and local credentials
+*.keystore
+*.jks
+*.p12
+.env
 
 # Ignore vscode config
 .vscode/

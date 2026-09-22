@@ -1,91 +1,64 @@
-# 👋🧩 Morphe Patches template
+# YouTube Oculus Patches
 
-Template repository for Morphe Patches.
+Experimental, open-source patches for the Meta Quest build of YouTube VR. This project is compatible with Morphe but is independent from, and is not endorsed by, the Morphe project or Google.
 
-## ❓ About
+[繁體中文說明](README.zh-TW.md) · [Installation guide](docs/INSTALLATION.md) · [Technical notes](docs/TECHNICAL.md)
 
-Patches for apps I like.
+> [!IMPORTANT]
+> This repository distributes patch source code only. It does not distribute original or pre-patched YouTube APK files. Obtain the original app through a source you are legally permitted to use.
 
-<!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
+## Add this source to Morphe
 
-### How to use these patches
+[Add YouTube Oculus Patches to Morphe](https://morphe.software/add-source?github=zzz123789465/youtube-oculus-patches)
 
-Click here to add these patches to Morphe: https://morphe.software/add-source?github=xyz-user/xyz-patches
+Development releases are published from the `dev` branch. Enable pre-releases for this patch source in Morphe Manager while the target remains experimental.
 
-## 🩹 Patches list
+## Supported target
+
+| App | Package | Version | Version code | ABI | Status |
+| --- | --- | --- | ---: | --- | --- |
+| YouTube VR for Meta Quest | `com.google.android.apps.youtube.vr.oculus` | `1.85.11` | `18511000` | `arm64-v8a` | Experimental |
+
+The original APK must be signed with Google's expected certificate. The patch metadata checks its SHA-256 signing certificate before patching.
+
+## Patches
 
 <!-- PATCHES_START EXPANDED -->
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release.
-     
-     If you wish for the patches list to be collapsed, then remove the word 'EXPANDED' from the comment tag above.
+<!-- Do not edit this block manually. The release workflow generates it. -->
 
-     If you wish to manually keep this list updated then remove the PATCHES_START and PATCHES_END 
-     comment blocks entirely. -->
+The patch list will be generated after the first release.
 
-#### A list of your patches will automatically be shown here after your first patches release is created.
-
-&nbsp;
-
-## 🚀 Getting development started
-
-To start using this template, follow these steps:
-
-1. [Setup](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-development/README.md) your development environment including adding a GitHub PAT as described [here](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/2_1_setup.md#-prepare-the-environment).
-2. [Create a new repository using this template](https://github.com/new?template_name=morphe-patches-template&template_owner=MorpheApp). Select create a new repository, and **enable 'Include all branches'** 
-3. Enable "Allow GitHub Actions to create and approve pull requests" in your repo Settings > Actions > General > Workflow permissions
-4. Update the [build.gradle.kts](patches/build.gradle.kts) file (Specifically, the 
-   [group of the project](patches/build.gradle.kts#L1), and the [About](patches/build.gradle.kts#L6-L11))
-5. Update the [README.md](README.md) file to be specific of your repo, and update the links in the [issue templates](.github/ISSUE_TEMPLATE).
-6. Choose a name for your patches project. Keep in mind you must use a name that does not 
-   imply authorship by the Morphe open source project. If unsure, then simply name these
-   patches after yourself ("UserXYZ Morphe patches"). See the [NOTICE](NOTICE) for details. 
-7. (Optional): Add `patches-bundle.png` to the project if you want a custom icon to show in
-   Morphe Manager instead of your GitHub profile avatar.
-
-🎉 You are now ready to start creating patches!
-
-## 🧑‍💻 Dev usage
-
-To develop and release your Patches using this template:
-
-- **Make all changes to the `dev` branch.**
-- For local development work build your patches using the gradle task `./gradlew buildAndroid` to generate the mpp file found in `patches/build/libs/patches-*.mpp`. Apply your patches locally using Morphe Desktop tool like any other patch bundle.
-- Always use [Semantic commit](https://kapeli.com/cheat_sheets/Semantic_Commits.docset/Contents/Resources/Documents/index) messages for commits. To keep it simple use only 3 commit message types: 
-  - `feat: Added a new feature`
-  - `fix: Some problem now fixed`
-  - `chore: Random change you do not want in the user facing changelog`
-- Commits of `fix:` and `feat:` will automatically generate new pre-releases and `chore:` will not create a new release.
-- Users can apply your dev branch releases by enabling `pre-release` in Morphe Manager patch sources.
-- When your dev branch is ready, and you want a stable release, merge dev branch to main (do not squash, and only merge).
-- **Always use semantic release (release.yml)**. Do not manually upload or create releases by hand
-  because many files must be updated and release.yml handles everything.
-
-## 🤓 Tips
-- See the [patcher documentation](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/1_patcher_intro.md) for more examples of creating patches and fingerprints.
-- Do not use AI to create new release scripts. The `release.yml` here already handles everything.
-  If you need omething custom with your releases then modify the existing `release.yml`
-  and `.releaserc` instead of writing everything new from scratch.
-- Do not manually edit or manually commit any generated files such as: `patches-list.json`,
-  `patches-bundle.json`, `CHANGELOG.md`.  These files will be automatically updated by `release.yml`.
-- Do not force push any semantic release commits as that will break all future releases.
-  If you need to fix a broken release, it's always easiest to create a new release instead of 
-  fixing an existing release.
-
-
-<!-- The patches end tag is intentionally placed here so the first release will clean up 
-     this readme of all developer instructions above. -->
 <!-- PATCHES_END -->
 
-### 🛠️ Building locally
+### Block video ads
 
-- Run `./gradlew buildAndroid`
-- The built patches .mpp file is found in `patches/build/libs/patches-*.mpp`
-- Patch the mpp file using [Morphe-Desktop](https://github.com/MorpheApp/morphe-desktop)
-  like any other patch bundle.
+Stops the two in-player advertising paths used for ad trigger dispatch and `PlayerBytes` ad-layout construction. These fingerprints are adapted from Morphe's existing YouTube ad patch and uniquely match YouTube VR `1.85.11`.
 
-See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation) for more information.
+The more invasive synchronous `AdBreak` fetch hook used during initial research is deliberately excluded from the public release because full playback regression testing is not yet complete.
 
-## 📜 License
+## Validation status
 
-UserXYZ Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+- Patch bundle builds successfully and targets only the exact Quest package, version, version code, ABI, and original signing certificate.
+- Five DEX files and 27,462 classes passed bytecode and cross-DEX hierarchy validation in the research build.
+- A patched build cold-launched successfully on a Meta Quest 3S running Android 14 / API 34.
+- OpenXR accepted the locally signed build, and no app crash, ANR, or verifier error was observed during the launch test.
+- Wider testing of signed-in playback, 180°/360° content, and real ad inventory is still required.
+
+Please report playback results through [GitHub Issues](https://github.com/zzz123789465/youtube-oculus-patches/issues) without attaching any APK.
+
+## Building
+
+```text
+./gradlew :patches:buildAndroid
+```
+
+The bundle is written to `patches/build/libs/patches-*.mpp`. For complete patching and installation instructions, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
+
+## Contributing
+
+Work on the `dev` branch and use semantic commit prefixes (`feat:`, `fix:`, or `chore:`). See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License and attribution
+
+Licensed under [GPL-3.0](LICENSE), subject to the additional notices in [NOTICE](NOTICE). Fingerprints derived from Morphe retain their original attribution. “Morphe” is used only to describe compatibility and does not imply authorship or endorsement.

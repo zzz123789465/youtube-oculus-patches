@@ -1,14 +1,13 @@
-group = "app.template"
+group = "app.youtubeoculus"
 
 patches {
-    // TODO: Update this section with your project details.
     about {
-        name = "UserXYZ Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
-        contact = "na"
-        website = "na"
+        name = "YouTube Oculus Patches"
+        description = "Experimental YouTube VR patches for Meta Quest, compatible with Morphe"
+        source = "https://github.com/zzz123789465/youtube-oculus-patches"
+        author = "YouTube Oculus Patches contributors"
+        contact = "https://github.com/zzz123789465/youtube-oculus-patches/issues"
+        website = "https://github.com/zzz123789465/youtube-oculus-patches"
         license = "GPLv3"
     }
 }

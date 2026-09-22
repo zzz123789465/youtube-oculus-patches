@@ -6,12 +6,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        # Patches template bug report
+        # YouTube Oculus Patches bug report
 
         Before creating a new bug report, please keep the following in mind:
 
-        - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/TEMPLATE/template-patches-template/issues?q=label%3A%22Bug+report%22).
-        - **Review the contribution guidelines**: Make sure your bug report adheres to it. You can find the guidelines [here](https://github.com/TEMPLATE/template-patches-template/blob/main/CONTRIBUTING.md).
+        - **Do not submit a duplicate bug report**: Search [existing bug reports](https://github.com/zzz123789465/youtube-oculus-patches/issues?q=label%3A%22Bug+report%22).
+        - **Review the contribution guidelines**: Read [CONTRIBUTING.md](https://github.com/zzz123789465/youtube-oculus-patches/blob/dev/CONTRIBUTING.md) before submitting.
+        - **Do not upload APK files, signing keys, or proprietary decompiled source.**
   - type: textarea
     attributes:
       label: Bug description
@@ -24,7 +25,7 @@ body:
   - type: textarea
     attributes:
       label: Error logs
-      description: Exceptions can be captured by running `logcat | grep AndroidRuntime` in a shell.
+      description: Attach sanitized ADB logcat output. Remove account details, tokens, and other private data first.
       render: shell
   - type: textarea
     attributes:
