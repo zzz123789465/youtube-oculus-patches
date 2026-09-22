@@ -24,10 +24,22 @@ The original APK must be signed with Google's expected certificate. The patch me
 ## Patches
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0-dev.1](https://github.com/zzz123789465/youtube-oculus-patches/releases/tag/v1.0.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+<details open>
+<summary>📦 YouTube VR (Meta Quest)&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
 
-<!-- Do not edit this block manually. The release workflow generates it. -->
+**🎯 Supported versions:**
 
-The patch list will be generated after the first release.
+| 🧪&nbsp;1.85.11 |
+| :---: |
+| Cold-launch tested on Meta Quest 3S; ad playback still needs wider testing. |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block video ads](#block-video-ads) | Blocks in-player pre-roll and mid-roll video ads in YouTube VR for Meta Quest. |  |
+
+</details>
 
 <!-- PATCHES_END -->
 

@@ -1,5 +1,37 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "0.0.0",
-  "patches": []
+  "version": "1.0.0-dev.1",
+  "patches": [
+    {
+      "name": "Block video ads",
+      "description": "Blocks in-player pre-roll and mid-roll video ads in YouTube VR for Meta Quest.",
+      "default": true,
+      "category": null,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.vr.oculus",
+          "name": "YouTube VR (Meta Quest)",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "8027b7a6ab434237c401541aa1b9dfc99a8fcadc7e5e3a27402a318825b34754"
+          ],
+          "targets": [
+            {
+              "version": "1.85.11",
+              "versionCodes": {
+                "ARM64_V8A": 18511000
+              },
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": "Cold-launch tested on Meta Quest 3S; ad playback still needs wider testing."
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }
